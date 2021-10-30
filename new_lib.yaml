@@ -1,0 +1,47 @@
+--- !ruby/object:Library
+authors:
+- &1 !ruby/object:Author
+  name: Oleksa Kim
+  biography: Student of KPI
+- &2 !ruby/object:Author
+  name: Semen
+  biography: Gamer
+- &3 !ruby/object:Author
+  name: Ingvar
+  biography: Bodybuilder
+books:
+- &7 !ruby/object:Book
+  title: Biography of Stepan Bandera
+  author: *1
+- &4 !ruby/object:Book
+  title: How to get baned cause of ur name
+  author: *2
+- &6 !ruby/object:Book
+  title: How to pump your muscles in Rome(Spain)
+  author: *3
+readers:
+- &5 !ruby/object:Reader
+  name: Mykola
+  email: mykola@rubygarage.org
+  city: Kyiv
+  street: Jangelya
+  house: 20
+- &8 !ruby/object:Reader
+  name: Nazar
+  email: nazar@gmail.com
+  city: Sarny
+  street: Lenina
+  house: 35
+orders:
+- !ruby/object:Order
+  book: *4
+  reader: *5
+  date: 2021-10-30
+- !ruby/object:Order
+  book: *6
+  reader: *5
+  date: 2021-10-30
+- !ruby/object:Order
+  book: *7
+  reader: *8
+  date: 2021-10-30
