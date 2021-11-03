@@ -8,7 +8,7 @@ module Validation
   end
 
   def positive_check(var)
-    raise NumError unless var.positive?
+    raise NumError if var.negative?
   end
 
   def not_empty_check(var)
