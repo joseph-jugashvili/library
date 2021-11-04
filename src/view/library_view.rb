@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LibraryView
   def top_books_view(sort)
     sort.map do |book, count|
