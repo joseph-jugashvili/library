@@ -36,8 +36,7 @@ lib.add(order3)
 
 lib.save('new_lib.yaml')
 
-library_view = LibraryView.new()
+library_view = LibraryView.new
 puts library_view.top_books(lib.sort_top_books)
 puts library_view.top_readers(lib.sort_top_readers)
 puts library_view.top_book_readers(lib.sort_top_book_readers)
-

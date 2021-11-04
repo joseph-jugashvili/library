@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require_relative 'library_requires'
 
 class Library
@@ -27,17 +28,17 @@ class Library
     end
   end
 
-  def sort_top_readers(quantity = TOP_READERS_QUANTITY)
+  def sort_top_readers(_quantity = TOP_READERS_QUANTITY)
     collect_top_readers = @orders.uniq.group_by(&:reader).map { |reader, books| [reader, books.count] }
     sorted = collect_top_readers.sort_by { |_readers, books| -books }
   end
 
-  def sort_top_books(quantity = TOP_BOOKS_QUANTITY)
+  def sort_top_books(_quantity = TOP_BOOKS_QUANTITY)
     collect_top_books = @orders.uniq.group_by(&:book).map { |reader, books| [reader, books.count] }
     sorted = collect_top_books.sort_by { |_readers, books| -books }
   end
 
-  def sort_top_book_readers(quantity = TOP_BOOK_READERS_QUANTITY)
+  def sort_top_book_readers(_quantity = TOP_BOOK_READERS_QUANTITY)
     collect_top_book_readers = @orders.group_by(&:book).map { |reader, books| [reader, books.count] }
     sorted = collect_top_book_readers.sort_by { |_readers, books| -books }
   end
