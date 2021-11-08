@@ -28,20 +28,20 @@ class Library
     end
   end
 
-  def sort_top_readers(_quantity = TOP_READERS_QUANTITY)
-    collect_top_readers = @orders.uniq.group_by(&:reader).map do |reader, readers_orders|
+  def sort_top_readers(quantity = TOP_READERS_QUANTITY)
+    collect_top_readers = @orders.group_by(&:reader).map do |reader, readers_orders|
       [reader, readers_orders.count]
     end
-    collect_top_readers.sort_by { |_reader, orders_count| -orders_count }
+    collect_top_readers.sort_by { |_reader, orders_count| -orders_count }.to_h.keys.first(quantity)
   end
 
-  def sort_top_books(_quantity = TOP_BOOKS_QUANTITY)
+  def sort_top_books(quantity = TOP_BOOKS_QUANTITY)
     collect_top_books = @orders.uniq.group_by(&:book).map { |book, orders_books| [book, orders_books.count] }
-    collect_top_books.sort_by { |_book, orders_count| -orders_count }
+    collect_top_books.sort_by { |_book, orders_count| -orders_count }.to_h.keys.first(quantity)
   end
 
-  def sort_top_book_readers(_quantity = TOP_BOOK_READERS_QUANTITY)
-    collect_top_book_readers = @orders.group_by(&:book).map { |book, orders_books| [book, orders_books.count] }
-    collect_top_book_readers.sort_by { |_book, orders_count| -orders_count }
+  def top_books_readers(quantity = TOP_BOOK_READERS_QUANTITY)
+    top_books = sort_top_books(quantity).map { |book, _| book.title }
+    orders.uniq.select { |order| top_books.include?(order.book.title) }.uniq(&:reader).length
   end
 end
