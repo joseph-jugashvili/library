@@ -41,7 +41,6 @@ class Library
   end
 
   def top_books_readers(quantity = TOP_BOOK_READERS_QUANTITY)
-    top_books = sort_top_books(quantity).map { |book, _| book.title }
-    orders.uniq.select { |order| top_books.include?(order.book.title) }.uniq(&:reader).length
+    orders.uniq.select { |order| sort_top_books(quantity).include?(order.book) }.uniq(&:reader).length
   end
 end

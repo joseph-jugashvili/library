@@ -15,6 +15,10 @@ class Reader < Entity
     validate_vars
   end
 
+  def ==(other)
+    name == other.name && email == other.email && city == other.city && street == other.street && house == other.house
+  end
+
   private
 
   def validate_vars

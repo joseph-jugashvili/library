@@ -11,6 +11,10 @@ class Book < Entity
     validate_vars
   end
 
+  def ==(other)
+    title == other.title && author == other.author
+  end
+
   private
 
   def validate_vars

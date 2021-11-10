@@ -16,4 +16,8 @@ class Author < Entity
     type_check(name, String)
     not_empty_check(name)
   end
+
+  def ==(other)
+    name == other.name && biography == other.biography
+  end
 end
